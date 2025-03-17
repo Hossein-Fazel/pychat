@@ -15,11 +15,11 @@ def handle_client(conn , addr):
             break
     conn.close()
 
-def start_server():
+def start_server(host, port):
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    server.bind(('localhost', 8080))
+    server.bind((host, port))
+    print(f"Server started on {host}:{port}")
     server.listen()
-    print("Server started on localhost:8080")
 
     while True:
         conn, addr = server.accept()
@@ -27,4 +27,4 @@ def start_server():
         thread.start()
 
 if __name__ == "__main__":
-    start_server()
+    start_server('localhost', 8080)
