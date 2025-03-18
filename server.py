@@ -2,12 +2,10 @@ import socket
 import threading
 
 def handle_client(conn , addr):
-    print(f"Client connected: {addr}")
     while True:
         try:
             message = conn.recv(1024).decode('utf-8')
             if not message:
-                print(f"Client disconnected: {addr}")
                 break
 
             elif message.startswith("<RECEIVE "):
