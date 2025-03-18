@@ -9,7 +9,25 @@ def handle_client(conn , addr):
             if not message:
                 print(f"Client disconnected: {addr}")
                 break
-            print(f"{message.strip()}")
+
+            elif message.startswith("<RECEIVE "):
+                splited = message.split(" ")
+                file_name, file_size = splited[1], int(splited[2])
+                print(f"Receiving file '{file_name}' ({file_size} bytes)")
+
+                with open(file_name, 'wb') as file:
+                    remaining_bytes = file_size
+                    while remaining_bytes > 0:
+                        data = conn.recv(min(4096, remaining_bytes))
+                        if not data:
+                            break
+                        file.write(data)
+                        remaining_bytes -= len(data)
+                print(f"File '{file_name}' received successfully.")
+
+            else:
+                print(f"{message.strip()}")
+            
         except Exception as e:
             print(f"Error with client {addr}: {e}")
             break
