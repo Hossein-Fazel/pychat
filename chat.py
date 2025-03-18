@@ -27,10 +27,16 @@ def main():
 
 
     
-    lthread = threading.Thread(target=start_server, args=(config["server"], config["your_port"]))
+    lthread = threading.Thread(target=start_server, args=(config["server"], config["your_port"]),daemon=True)
     tthread = threading.Thread(target=start_client, args=(config["server"], config["friend_port"], name))
     lthread.start()
     tthread.start()
+
+
+    tthread.join()
+    print("\t\t*** Closing the application... ***\n")
+    print("\t\t\t*** Goodbye ***\n")
+    exit(0)
 
 
 if __name__ == "__main__":
