@@ -7,7 +7,7 @@ def send_file(ssocket, file):
         fname = os.path.basename(file)
         fsize = os.path.getsize(file)
 
-        header = f"<RECEIVE {fname} {fsize}"
+        header = f"<RECEIVE:{fname}:{fsize}"
         ssocket.send(header.encode('utf-8'))
 
         with open(file, 'rb') as file:

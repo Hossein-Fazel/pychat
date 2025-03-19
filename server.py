@@ -8,8 +8,8 @@ def handle_client(conn , addr):
             if not message:
                 break
 
-            elif message.startswith("<RECEIVE "):
-                splited = message.split(" ")
+            elif message.startswith("<RECEIVE:"):
+                splited = message.split(":")
                 file_name, file_size = splited[1], int(splited[2])
                 print(f"Receiving file '{file_name}' ({file_size} bytes)")
 

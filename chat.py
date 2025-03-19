@@ -11,7 +11,7 @@ config_schema = {
 }
 
 def main():
-    print("\t\t*** Welcome to simple chat ***\n")
+    print("\t\t*** Welcome to pychat ***\n")
     try:
         with open("config.json", 'r') as jfile:
             config = load(jfile)
