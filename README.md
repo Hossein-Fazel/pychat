@@ -43,8 +43,8 @@ This is a simple chat application written in Python that allows two users to com
 ## Usage
 
 1. **Run the Server and Client**:
-   - Open two terminal windows.
-   - In the first terminal, run the chat application:
+   - Open terminal.
+   - In the terminal, run the chat application:
      ```bash
      python chat.py
      ```
