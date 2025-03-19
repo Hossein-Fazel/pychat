@@ -1,6 +1,6 @@
-# Simple Chat Application
+# Pychat
 
-This is a simple chat application written in Python that allows two users to communicate over a network. The application supports text messaging and file transfers between users.
+Pychat is a simple chat application written in Python that allows two users to communicate over a network. The application supports text messaging and file transfers between users.
 
 ## Features
 
