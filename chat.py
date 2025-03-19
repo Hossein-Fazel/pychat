@@ -3,6 +3,9 @@ from server import start_server
 from client import start_client
 from json import load
 from json_checker import Checker
+import os
+import platform
+
 
 config_schema = {
     "server" : str,
@@ -10,7 +13,17 @@ config_schema = {
     "friend_port" : int
 }
 
+def clear_screen():
+    system_name = platform.system()
+
+    if system_name == "Windows":
+        os.system('cls')
+    else:
+        os.system('clear')
+
+
 def main():
+    clear_screen()
     print("\t\t*** Welcome to pychat ***\n")
     try:
         with open("config.json", 'r') as jfile:
