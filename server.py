@@ -21,7 +21,13 @@ def handle_client(conn , addr):
                             break
                         file.write(data)
                         remaining_bytes -= len(data)
-                print(f"File '{file_name}' received successfully.")
+
+                        percent = 100 - round(remaining_bytes/file_size * 100, 1)
+                        progress = int(percent // 2)
+                        print(f"\r[{'-' * progress}{' ' * (50 - progress)}] {round(percent, 1)}%", end="")
+
+                
+                print(f"\nFile '{file_name}' received successfully.")
 
             else:
                 print(f"{message.strip()}")

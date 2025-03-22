@@ -9,14 +9,20 @@ def send_file(ssocket, file):
 
         header = f"<RECEIVE:{fname}:{fsize}"
         ssocket.send(header.encode('utf-8'))
-
+        sent_size = 0
         with open(file, 'rb') as file:
             while True:
                 data = file.read(4096)
                 if not data:
                     break
                 ssocket.send(data)
-        print(f"File '{fname}' sent successfully.")
+                
+                sent_size += len(data)
+                percent = round(sent_size/fsize * 100, 1)
+                progress = int(percent // 2)
+                print(f"\r[{'-' * progress}{' ' * (50 - progress)}] {percent}%", end="")
+
+        print(f"\nFile '{fname}' sent successfully.")
     except Exception as e:
         print(f"Error sending file: {e}")
 
