@@ -16,6 +16,7 @@ class progressbar:
             raise ValueError("Type mismatch in initial values")
         
     def reset(self):
+        self._isStop = False
         percent = round(self._start/self._total * 100, 1)
         progress = int(percent // self._scale)
         self._progress_bar = f"\r[{self._filled * progress}{' ' * (self._size - progress)}] {percent}%"
