@@ -1,5 +1,6 @@
 import socket
 import threading
+from progressbar import progressbar
 
 def handle_client(conn , addr):
     while True:
@@ -13,6 +14,7 @@ def handle_client(conn , addr):
                 file_name, file_size = splited[1], int(splited[2])
                 print(f"Receiving file '{file_name}' ({file_size} bytes)")
 
+                pbar = progressbar('-', total=file_size)
                 with open(file_name, 'wb') as file:
                     remaining_bytes = file_size
                     while remaining_bytes > 0:
@@ -22,12 +24,11 @@ def handle_client(conn , addr):
                         file.write(data)
                         remaining_bytes -= len(data)
 
-                        percent = 100 - round(remaining_bytes/file_size * 100, 1)
-                        progress = int(percent // 2)
-                        print(f"\r[{'-' * progress}{' ' * (50 - progress)}] {round(percent, 1)}%", end="")
-
+                        pbar.update(len(data))
+                        pbar.show()
+                    pbar.stop()
                 
-                print(f"\nFile '{file_name}' received successfully.")
+                print(f"File '{file_name}' received successfully.")
 
             else:
                 print(f"{message.strip()}")

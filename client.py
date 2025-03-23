@@ -1,6 +1,7 @@
 import socket
 from time import sleep
 import os
+from progressbar import progressbar
 
 def send_file(ssocket, file):
     try:
@@ -9,7 +10,7 @@ def send_file(ssocket, file):
 
         header = f"<RECEIVE:{fname}:{fsize}"
         ssocket.send(header.encode('utf-8'))
-        sent_size = 0
+        pbar = progressbar("-", total= fsize,)
         with open(file, 'rb') as file:
             while True:
                 data = file.read(4096)
@@ -17,12 +18,11 @@ def send_file(ssocket, file):
                     break
                 ssocket.send(data)
                 
-                sent_size += len(data)
-                percent = round(sent_size/fsize * 100, 1)
-                progress = int(percent // 2)
-                print(f"\r[{'-' * progress}{' ' * (50 - progress)}] {percent}%", end="")
+                pbar.update(len(data))
+                pbar.show()
+            pbar.stop()
 
-        print(f"\nFile '{fname}' sent successfully.")
+        print(f"File '{fname}' sent successfully.")
     except Exception as e:
         print(f"Error sending file: {e}")
 
