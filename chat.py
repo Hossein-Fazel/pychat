@@ -8,8 +8,9 @@ import platform
 
 
 config_schema = {
-    "server" : str,
+    "your_server" : str,
     "your_port" : int,
+    "friend_server" : str,
     "friend_port" : int
 }
 
@@ -22,7 +23,7 @@ def clear_screen():
         os.system('clear')
 
 
-def main():
+def start_app():
     clear_screen()
     print("\t\t*** Welcome to pychat ***\n")
     try:
@@ -40,8 +41,8 @@ def main():
 
 
     
-    lthread = threading.Thread(target=start_server, args=(config["server"], config["your_port"]),daemon=True)
-    tthread = threading.Thread(target=start_client, args=(config["server"], config["friend_port"], name))
+    lthread = threading.Thread(target=start_server, args=(config["your_server"], config["your_port"]),daemon=True)
+    tthread = threading.Thread(target=start_client, args=(config["friend_server"], config["friend_port"], name))
     lthread.start()
     tthread.start()
 
@@ -53,4 +54,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    start_app()
