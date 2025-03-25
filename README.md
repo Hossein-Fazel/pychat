@@ -16,7 +16,7 @@ Pychat is a simple chat application written in Python that allows two users to c
 
 1. Clone the repository or download the source code.
    ```bash
-   git clone https://github.com/Hossein-Fazel/pychat.git
+   git clone --recurse-submodules https://github.com/Hossein-Fazel/pychat.git
    cd pychat
    ```
 
