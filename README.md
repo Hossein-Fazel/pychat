@@ -14,9 +14,9 @@ Pychat is a simple chat application written in Python that allows two users to c
 
 ## Installation
 
-1. Clone the repository or download the source code.
+1. Clone the repository
    ```bash
-   git clone --recurse-submodules https://github.com/Hossein-Fazel/pychat.git
+   git clone https://github.com/Hossein-Fazel/pychat.git
    cd pychat
    ```
 
@@ -29,13 +29,15 @@ Pychat is a simple chat application written in Python that allows two users to c
    - The project already includes a `config.json` file with the necessary configuration. Here's what each field means:
      ```json
      {
-         "server": "localhost",
+         "your_server": "0.0.0.0",
          "your_port": 8080,
+         "friend_server" : "0.0.0.0"
          "friend_port": 8000
      }
      ```
-     - `server`: The IP address or hostname of the server. Use `localhost` for local testing.
+     - `your_server`: The IP address or hostname of your server. Use `localhost` for local testing.
      - `your_port`: The port on which your server will listen for incoming connections.
+     - `friend_server`: The IP address or hostname of friend server. Use `localhost` for local testing.
      - `friend_port`: The port on which your friend's server is listening. This is where your client will connect.
 
    - Make sure the `your_port` and `friend_port` values are different for each user to avoid conflicts.
