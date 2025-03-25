@@ -1,0 +1,3 @@
+[submodule "PyBar"]
+	path = PyBar
+	url = https://github.com/Hossein-Fazel/PyBar.git
