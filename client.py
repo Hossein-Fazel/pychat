@@ -1,7 +1,7 @@
 import socket
 from time import sleep
 import os
-from PyBar.progressbar import progressbar
+from progressbar import progressbar
 
 def send_file(ssocket, file):
     try:

@@ -1,6 +1,6 @@
 import socket
 import threading
-from PyBar.progressbar import progressbar
+from progressbar import progressbar
 
 def handle_client(conn , addr):
     while True:
