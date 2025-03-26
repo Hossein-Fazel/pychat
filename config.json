@@ -1,7 +1,6 @@
-// change this file and put your port and friend infos
 {
     "your_server" : "0.0.0.0",
-    "your_port" : your_port,
-    "friend_server" : "your friend ip",
-    "friend_port" : friend_port
+    "your_port" : 8080,
+    "friend_server" : "0.0.0.0",
+    "friend_port" : 8000
 }
