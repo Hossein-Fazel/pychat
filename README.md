@@ -10,7 +10,7 @@ Pychat is a simple chat application written in Python that allows two users to c
 
 ## Prerequisites
 
-- Python version 3
+- Python version 3.6 and newer
 
 ## Installation
 
